@@ -11,7 +11,7 @@ function App() {
   const [city, setCity] = useState('');
 
   const apiKey = 'f1d392a2080d4952ba021fce20221681';
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=fr&units=metric&appid=${apiKey}`
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&units=metric&appid=${apiKey}`
 
 
   useEffect(() => {
@@ -30,11 +30,11 @@ function App() {
 
   return (
     <div className="container">
-      <h1>REACT WEATHER APP</h1>
-      <div className="container_form">
-        <label for="location-name">
+      <h1 className="container_title">REACT WEATHER APP</h1>
+      <div className="input-container">
+        <h2 >
           Enter Location :
-        </label>
+        </h2>
         <div>
             <input
               type="text"
@@ -47,21 +47,22 @@ function App() {
           </button>
         </div>
       </div>
-      <div className="container_informations">
+      <div >
             
         {
           apiData.main 
           ? (
-            <div className="container_informations">
-              <img alt ="weather icon" src={`http://openweathermap.org/img/w/${apiData.weather[0].icon}.png`}/>
-              <h1>{apiData.name}</h1>
-              <h1>{apiData.weather[0].description}</h1>
-              <h1>Temparature : {apiData.main.temp} °</h1>
+            <div className="content-container">
+              <img className="content-container_image" alt ="weather icon" src={`http://openweathermap.org/img/w/${apiData.weather[0].icon}.png`}/>
+              <h1 className="content-container_temp">{apiData.main.temp.toFixed(0)} °</h1>
+              <h1 className="content-container_description">{apiData.weather[0].description}</h1>
+              <h1 className="content-container_city">{apiData.name}</h1>
+              
 
             </div>
             
           ) : (
-          <h1>Loading</h1> 
+          <h1></h1> 
           )}
       </div>
     </div>
